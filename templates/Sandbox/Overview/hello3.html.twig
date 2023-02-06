@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenue !</title>
+</head>
+    <body>
+    <h1>Bienvenue {{ prenom }}</h1>
+    <p>
+    {% for jeu in jeux %}
+        {{ loop.index }}:{{ jeu }}
+        <br>
+    {% else %}
+        Je ne prenere aucun jeu
+    {% endfor %}
+    </p>
+    </body>
+</html>
