@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenue !</title>
+</head>
+    <body>
+    <h1>Bienvenue {{ prenom }}</h1>
+        <table><thead></thead><tbody>
+    {% for jeu in jeux %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ jeu }}</td>
+        </tr>
+        <br>
+    {% else %}
+        Je ne prenere aucun jeu
+    {% endfor %}
+            </tbody></table>
+    </body>
+</html>
