@@ -52,4 +52,21 @@ class InjectionController extends AbstractController
             'controller_name' => 'InjectionController',
         ]);
     }
+
+    #[Route('/create-flash', name: '_create_flash')]
+    public function createFlashAction(): Response
+    {
+        $this->addFlash("info", "FLASH FLASH");
+        $this->addFlash("error", "big erreur");
+        $this->addFlash("error", "ATTENTION");
+        return $this->redirectToRoute("sandbox_injection_display_flash");
+    }
+
+    #[Route('/display-flash', name: '_display_flash')]
+    public function displayFlashAction(): Response
+    {
+        return $this->render("Sandbox/injection/display.html.twig");
+    }
+
+
 }
