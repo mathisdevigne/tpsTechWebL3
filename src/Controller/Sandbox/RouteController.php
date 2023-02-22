@@ -79,4 +79,24 @@ class RouteController extends AbstractController
         );
         return $this->render('Sandbox/route/test1234.html.twig', $args);
     }
+
+    #[Route('/redirect1', name: '_redirect1')]
+    public function redirect1Action(): Response
+    {
+        return $this->redirectToRoute('sandbox_prefix_hello4');
+    }
+
+    #[Route('/redirect2', name: '_redirect2')]
+    public function redirect2Action(): Response
+    {
+        $params =  array('year' => 2014, 'month'=> 11, '$filename' => 'image', ) ;
+        return $this->redirectToRoute('sandbox_route_test4', $params);
+    }
+
+    #[Route('/redirect3', name: '_redirect3')]
+    public function redirect3Action(): Response
+    {
+        dump('bonjour');
+        return $this->redirectToRoute('sandbox_prefix_hello4');
+    }
 }
