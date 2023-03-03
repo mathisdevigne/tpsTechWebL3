@@ -1,0 +1,21 @@
+{# vue pour l'action test4bis #}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        <style>
+            caption { border: red solid 1px; }
+            table { border: black solid 1px; }
+            th, td { border: black solid 1px; padding: 2px 10px 2px 10px;}
+            th { text-align: right; }
+        </style>
+    </head>
+    <body>
+        <h1>Route::{{ title }}</h1>
+        <table>
+            <tr><th>year</th><td>{{ year }}</td></tr>
+        </table>
+        {{ dump(year) }}    {# est-ce une chaîne ? #}
+    </body>
+</html>

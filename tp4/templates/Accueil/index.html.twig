@@ -1,0 +1,13 @@
+{% extends 'Layouts/layout_vente.html.twig' %}
+
+{% block title %}{{ parent() }} : bienvenue{% endblock %}
+
+{#
+    note pédagogique :
+     - on ne redéfinit pas le bloc "body" sinon on perd tout ce qu'il y a dedans
+     - on ne redéfinit que les blocs internes à "body"
+#}
+
+{% block titre_principal %}{{ parent() }} : bienvenue{% endblock %}
+
+{# on ne redéfinit pas le bloc "vue" car on n'y ajoute rien #}

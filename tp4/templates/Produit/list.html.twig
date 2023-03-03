@@ -1,0 +1,27 @@
+{% extends 'Layouts/layout_vente.html.twig' %}
+
+{% block title %}{{ parent() }} : produits{% endblock %}
+
+{% block titre_principal %}{{ parent() }} : liste des produits{% endblock %}
+
+{% block vue %}
+    <p>
+        {% if page == 0 %}
+            affichage de toutes les pages
+        {% else %}
+            affichage de la page {{ page }}
+        {% endif %}
+    </p>
+
+    {% if produits|length == 0 %}
+        <p>Aucun produit dans la base de données</p>
+    {% else %}
+        <ul>
+            {% for produit in produits %}
+                <li>{{ produit.denomination }} ({{ produit.code }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{ dump(produits) }}
+{% endblock %}

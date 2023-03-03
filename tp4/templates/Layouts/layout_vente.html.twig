@@ -1,0 +1,41 @@
+{# template intermédiaire (niveau 2) spécifique au site de vente #}
+{% extends 'Layouts/layout.html.twig' %}
+
+{% block title %}Vente{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" media="screen" type="text/css" title="default" href="{{ asset('css/default.css') }}" />
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/global.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/macros.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="flash">
+        {% include 'Layouts/flash.html.twig' %}
+    </div>
+
+    <div id="menu">
+        {{ render(controller('App\\Controller\\AccueilController::menuAction')) }}
+    </div>
+
+    <div id="header">
+        {% include 'Layouts/header.html.twig' %}
+    </div>
+
+    <div id="titre">
+        <h1>{% block titre_principal %}Site de vente{% endblock %}</h1>
+    </div>
+
+    <div id="vue">
+        {% block vue %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% include 'Layouts/footer.html.twig' %}
+    </div>
+{% endblock %}

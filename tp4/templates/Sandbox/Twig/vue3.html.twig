@@ -1,0 +1,15 @@
+{% extends  'Sandbox/Layouts/layout1.html.twig' %}
+
+{% block title %}{{ parent() }} : vue 3{% endblock %}
+
+{# un commentaire twig est autorisé, mais pas du code #}
+
+{% block titre_principal %}Titre principal de la vue 3{% endblock %}
+
+<!-- du code HTML, fut-ce un commentaire, est interdit -->
+
+{% block vue %}
+    <p>
+        Le paragraphe du template <code>vue3.html.twig</code>
+    </p>
+{% endblock %}

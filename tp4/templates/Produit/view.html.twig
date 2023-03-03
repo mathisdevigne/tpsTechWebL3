@@ -1,0 +1,16 @@
+{% extends 'Layouts/layout_vente.html.twig' %}
+
+{% block title %}{{ parent() }} : produits{% endblock %}
+
+{% block titre_principal %}{{ parent() }} : détail du produit {{ produit.id }}{% endblock %}
+
+{% block vue %}
+    <ul>
+        <li>id : {{ produit.id }}</li>
+        <li>dénomination : {{ produit.denomination }}</li>
+        <li>code barre : {{ produit.code }}</li>
+        <li>actif : {{ produit.actif ? 'vrai' : 'faux' }}</li>
+    </ul>
+
+    {{ dump(produit) }}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'Layouts/layout_vente.html.twig' %}
+
+{% block title %}{{ parent() }} : magasins{% endblock %}
+
+{% block titre_principal %}{{ parent() }} : produits dans une fourchette de prix{% endblock %}
+
+{% block vue %}
+    {# normalement devrait être dans un fichier css #}
+    <style>
+        caption { border: red solid 1px; }
+        table { border: black solid 1px; }
+        th, td { border: black solid 1px; padding: 2px 10px 2px 10px;}
+        th { text-align: right; }
+    </style>
+
+    <p>
+        Nous sommes dans le magasin numéro&nbsp;{{ id }}.<br />
+        Voici la liste des produits dont les prix sont compris entre {{ valinf }}&nbsp;euro{{ valinf <=1 ? '' : 's' }}
+        et
+        {% if valsup == -1 %}
+            pas de limite.
+        {% else %}
+            {{ valsup }}&nbsp;euro{{ valsup <=1 ? '' : 's' }}.
+        {% endif %}
+    </p>
+
+    {% set quantite = 0 %}
+    {% set total = 0 %}
+    <table>
+        <caption>Produit(s) correspondant à vos critères</caption>
+        <tr>
+            <th>dénomination</th>
+            <th>PU</th>
+            <th>qté</th>
+            <th>total</th>
+        </tr>
+        {% for produit in produits %}
+            {# Notez au passage les deux manières d'accéder à une case du tableau produit :
+                produit['denomination']      la plus logique car produit est un tableau
+                produit.denomination         la plus lisible (et que nous utiliserons)
+            #}
+            {% if (produit.prixUnitaire >= valinf) and ((valsup == -1) or (produit.prixUnitaire <= valsup)) %}
+                {% set totalProduit = produit.quantite * produit.prixUnitaire %}
+                {% set quantite = quantite + produit.quantite %}
+                {% set total = total + totalProduit %}
+                <tr>
+                    <td>{{ produit.denomination }}</td>
+                    <td>{{ produit.prixUnitaire }}</td>
+                    <td>{{ produit.quantite }}</td>
+                    <td>{{ totalProduit }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <th colspan="2">totaux</th>
+            <td>{{ quantite }}</td>
+            <td>{{ total }}</td>
+        </tr>
+    </table>
+{% endblock %}

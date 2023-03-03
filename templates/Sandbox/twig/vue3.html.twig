@@ -1,0 +1,11 @@
+{% extends 'layout1.html.twig' %}
+{% block title %}{{ parent() }} : vue 2 {% endblock %}
+{# un commentaire twig est autoris´e, mais pas du code #}
+{% block titre_principal %}Titre principal de la vue 2{% endblock %}
+<!-- du code HTML, fut-ce un commentaire, est interdit -->
+
+{% block vue %}
+    <p>
+        Le paragraphe du template <code>vue2.html.twig</code>
+    </p>
+{% endblock %}

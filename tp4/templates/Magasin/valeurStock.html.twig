@@ -1,0 +1,11 @@
+{% extends 'Layouts/layout_vente.html.twig' %}
+
+{% block title %}{{ parent() }} : magasins{% endblock %}
+
+{% block titre_principal %}{{ parent() }} : valeur du stock du magasin {{ id }}{% endblock %}
+
+{% block vue %}
+    <p>
+        La valeur du stock est {{ total }} euro(s).
+    </p>
+{% endblock %}
